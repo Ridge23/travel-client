@@ -1,0 +1,12 @@
+<div class="card" *ngIf="objects.length > 0">
+  <div class="card-header">
+    {{title}}
+  </div>
+  <div class="card-block">
+    <ul>
+      <li *ngFor="let object of objects">
+        <a href="#" (click)="chooseObject(object.uuid)">{{object.title}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

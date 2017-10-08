@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <search-form [searchResult]="searchData" (searchResultChange)="searchResultChanged($event)"></search-form>
+</nav>
+<div class="container-fluid main-container">
+  <div class="row no-gutters">
+    <div class="col px-1">
+      <right-column-card title="Museums" [objects]="museums" ></right-column-card>
+      <right-column-card title="Tours" [objects]="tours" ></right-column-card>
+    </div>
+    <div class="col px-1">
+
+    </div>
+    <div class="col px-1">
+
+    </div>
+  </div>
+</div>
