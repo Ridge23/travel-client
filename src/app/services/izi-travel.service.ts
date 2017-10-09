@@ -21,4 +21,10 @@ export class IziTravelService {
     
         return this.apiCaller.get(url);
     }
+
+    getObject(id: string) : AxiosPromise {
+        let url = '/mtgobjects/' + id + '?languages=en';
+
+        return this.apiCaller.get(url);
+    }
 }

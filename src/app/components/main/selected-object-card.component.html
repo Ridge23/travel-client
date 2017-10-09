@@ -1,0 +1,15 @@
+<div class="card" *ngIf="selectedObject">
+  <div class="card-header text-capitalize">
+    {{selectedObject.type}}: {{selectedObject.content[0].title}}
+  </div>
+  <div class="card-block">
+    <p>Description:</p>
+    <p [innerHTML]="selectedObject.content[0].desc | keepHtml"></p>
+    <p>Parts:</p>
+    <ol>
+      <li *ngFor="let part of selectedObject.content[0].children">
+        <a href="#/" (click)="selectPart(part.uuid)">{{ part.title }}</a>
+      </li>
+    </ol>
+  </div>
+</div>

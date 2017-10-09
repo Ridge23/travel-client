@@ -3,12 +3,12 @@
 </nav>
 <div class="container-fluid main-container">
   <div class="row no-gutters">
-    <div class="col px-1">
-      <right-column-card title="Museums" [objects]="museums" ></right-column-card>
-      <right-column-card title="Tours" [objects]="tours" ></right-column-card>
+    <div class="col-3 px-1">
+      <right-column-card title="Museums" [objects]="museums" (selectedObjectChange)="selectedObjectChanged($event)" ></right-column-card>
+      <right-column-card title="Tours" [objects]="tours" (selectedObjectChange)="selectedObjectChanged($event)" ></right-column-card>
     </div>
     <div class="col px-1">
-
+      <selected-object-card [selectedObject]="selectedObject" (selectedPartChange)="selectedPartChanged($event)" ></selected-object-card>
     </div>
     <div class="col px-1">
 
