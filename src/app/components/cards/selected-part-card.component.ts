@@ -15,7 +15,6 @@ export class SelectedPartCard {
      * @return {string}
      */
     getMediaUrl() {
-        console.log(this.selectedPart.content[0].audio[0].uuid );
         return 'https://media.izi.travel/' 
             + this.selectedPart.content_provider.uuid 
             + '/' 

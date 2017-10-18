@@ -7,8 +7,10 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { RightColumnCard } from './components/cards/right-column-card.component';
 import { SelectedPartCard } from './components/cards/selected-part-card.component';
 import { SelectedObjectCard } from './components/cards/selected-object-card.component';
+import { AssetModal } from './components/modals/asset-modal.component';
 
 import { IziTravelService } from './services/izi-travel.service';
+import { BienvenidoService } from './services/bienvenido.service';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 
@@ -19,13 +21,14 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
     RightColumnCard,
     EscapeHtmlPipe,
     SelectedObjectCard,
-    SelectedPartCard
+    SelectedPartCard,
+    AssetModal
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [IziTravelService],
+  providers: [IziTravelService, BienvenidoService],
   bootstrap: [MainComponent]
 })
 export class AppModule { }

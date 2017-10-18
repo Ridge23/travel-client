@@ -1,11 +1,17 @@
 <div class="card" *ngIf="selectedPart">
+  <asset-modal></asset-modal>
   <div class="card-header text-capitalize">
     {{selectedPart.type}}: {{selectedPart.content[0].title}}
   </div>
   <div class="card-block">
-    <p>Audio:</p>
+    <div class="card-button-container" >
+      <button data-toggle="modal" data-target="#saveAssetModal" class="btn btn-outline-primary my-2 my-sm-0" >
+        Save Asset
+      </button>
+    </div>
+    <p><b>Audio:</b></p>
     <audio controls src="{{getMediaUrl()}}"></audio>
-    <p>Description:</p>
+    <p><b>Description:</b></p>
     <p [innerHTML]="selectedPart.content[0].desc | keepHtml"></p>
   </div>
 </div>
