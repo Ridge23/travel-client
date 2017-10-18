@@ -12,8 +12,6 @@ export class AssetModal implements OnInit {
     private cities: Object[] = [];
     private assets: Object[] = [];
 
-    private selectedCityId = 0;
-
     constructor(private apiService: BienvenidoService) {}
 
     ngOnInit() : void {

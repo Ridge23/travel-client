@@ -12,6 +12,7 @@ import { AssetModal } from './components/modals/asset-modal.component';
 import { IziTravelService } from './services/izi-travel.service';
 import { BienvenidoService } from './services/bienvenido.service';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
+import { StripHtmlPipe } from './pipes/remove-html.pipe';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
     SearchFormComponent,
     RightColumnCard,
     EscapeHtmlPipe,
+    StripHtmlPipe,
     SelectedObjectCard,
     SelectedPartCard,
     AssetModal

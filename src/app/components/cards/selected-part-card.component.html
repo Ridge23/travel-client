@@ -1,5 +1,5 @@
 <div class="card" *ngIf="selectedPart">
-  <asset-modal></asset-modal>
+  <asset-modal [selectedPart]="selectedPart"></asset-modal>
   <div class="card-header text-capitalize">
     {{selectedPart.type}}: {{selectedPart.content[0].title}}
   </div>
