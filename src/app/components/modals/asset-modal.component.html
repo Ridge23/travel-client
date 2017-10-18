@@ -13,10 +13,10 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">City:</label>
               <div class="col-sm-9">
-                <select class="custom-select" (change)="loadCityAssets($event.target.value)" >
+                <select class="custom-select" (change)="loadCityAssets($event.target.value)">
                   <option>Select city</option>
                   <option *ngFor="let city of cities" value={{city.id}}>
-                      {{city.name}}
+                    {{city.name}}
                   </option>
                 </select>
               </div>
@@ -38,11 +38,11 @@
               </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Description:</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control"  [innerHTML]="selectedPart.content[0].desc | stripHtml"></textarea>
-                </div>
+              <label class="col-sm-3 col-form-label">Description:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" [innerHTML]="selectedPart.content[0].desc | stripHtml"></textarea>
               </div>
+            </div>
           </form>
         </div>
       </div>
