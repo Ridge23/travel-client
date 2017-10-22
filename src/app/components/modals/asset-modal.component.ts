@@ -14,6 +14,8 @@ export class AssetModal implements OnInit {
     private cities: Object[] = [];
     private assets: Object[] = [];
 
+    public mediaSaved = false;
+
     constructor(private apiService: BienvenidoService, private iziTravelApiService: IziTravelService) {}
 
     ngOnInit() : void {
@@ -24,6 +26,15 @@ export class AssetModal implements OnInit {
             }
         );
 
+        this.setMediaUrl();
+    }
+
+    ngOnChanges() : void {
+        this.setMediaUrl();
+        this.mediaSaved = false;
+    }
+
+    setMediaUrl() : void {
         this.selectedPart.mediaUrl = this.iziTravelApiService.getMediaUrl(
             this.selectedPart.content_provider.uuid, 
             this.selectedPart.content[0].audio[0].uuid
@@ -35,7 +46,6 @@ export class AssetModal implements OnInit {
         .then(
             data => {
                 this.assets = data.data.assets;
-                console.log(this.assets);
             }
         )
     }
@@ -46,6 +56,10 @@ export class AssetModal implements OnInit {
             form.value.title, 
             form.value.description, 
             form.value.mediaUrl
+        ).then(
+            data => {
+                this.mediaSaved = true;
+            }
         );
     }
 }
