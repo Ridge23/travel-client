@@ -7,13 +7,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="container">
-          <form class="form">
+      <form class="form" #newMediaForm="ngForm" (ngSubmit)="onSubmit(newMediaForm)" >
+        <div class="modal-body">
+          <div class="container">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">City:</label>
               <div class="col-sm-9">
-                <select class="custom-select" (change)="loadCityAssets($event.target.value)">
+                <select class="custom-select" (change)="loadCityAssets($event.target.value)" >
                   <option>Select city</option>
                   <option *ngFor="let city of cities" value={{city.id}}>
                     {{city.name}}
@@ -24,8 +24,8 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Asset:</label>
               <div class="col-sm-9">
-                <select class="custom-select">
-                  <option *ngFor="let asset of assets">
+                <select class="custom-select" name="assetId" ngModel>
+                  <option *ngFor="let asset of assets" value={{asset.id}}>
                     {{asset.name}}
                   </option>
                 </select>
@@ -34,21 +34,22 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Title:</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value={{selectedPart.content[0].title}} />
+                <input type="text" class="form-control" name="title" [ngModel]="selectedPart.content[0].title"  />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Description:</label>
               <div class="col-sm-9">
-                <textarea class="form-control" [innerHTML]="selectedPart.content[0].desc | stripHtml"></textarea>
+                <textarea class="form-control" name="description" [ngModel]="selectedPart.content[0].desc | stripHtml" ></textarea>
               </div>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
+        <div class="modal-footer">
+          <input type="hidden" name="mediaUrl" [ngModel]="selectedPart.mediaUrl" />
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

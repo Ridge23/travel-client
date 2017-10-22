@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BienvenidoService } from '../../services/bienvenido.service';
+import { IziTravelService } from '../../services/izi-travel.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'asset-modal',
@@ -12,7 +14,7 @@ export class AssetModal implements OnInit {
     private cities: Object[] = [];
     private assets: Object[] = [];
 
-    constructor(private apiService: BienvenidoService) {}
+    constructor(private apiService: BienvenidoService, private iziTravelApiService: IziTravelService) {}
 
     ngOnInit() : void {
         this.apiService.getCities()
@@ -20,6 +22,11 @@ export class AssetModal implements OnInit {
             data => {
                 this.cities = data.data;
             }
+        );
+
+        this.selectedPart.mediaUrl = this.iziTravelApiService.getMediaUrl(
+            this.selectedPart.content_provider.uuid, 
+            this.selectedPart.content[0].audio[0].uuid
         );
     }
 
@@ -31,5 +38,14 @@ export class AssetModal implements OnInit {
                 console.log(this.assets);
             }
         )
+    }
+
+    onSubmit(form: NgForm) {
+        this.apiService.createAssetMedia(
+            form.value.assetId, 
+            form.value.title, 
+            form.value.description, 
+            form.value.mediaUrl
+        );
     }
 }

@@ -27,4 +27,18 @@ export class IziTravelService {
 
         return this.apiCaller.get(url);
     }
+
+    /**
+     * @param {string} contentProviderUUId 
+     * @param {string} audioUUId 
+     * 
+     * @return {string}
+     */
+    getMediaUrl(uuid: string, audioUuid: string) {
+        return 'https://media.izi.travel/' 
+            + uuid 
+            + '/' 
+            + audioUuid
+            + '.m4a';
+    }
 }

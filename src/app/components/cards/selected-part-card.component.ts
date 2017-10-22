@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IziTravelService } from '../../services/izi-travel.service';
 
 @Component({
     selector: 'selected-part-card',
@@ -8,6 +9,8 @@ import { Component, Input } from '@angular/core';
 export class SelectedPartCard {
     @Input() selectedPart;
 
+    constructor(private iziTravelApiService: IziTravelService) {}
+
     /**
      * @param {string} contentProviderUUId 
      * @param {string} audioUUId 
@@ -15,10 +18,9 @@ export class SelectedPartCard {
      * @return {string}
      */
     getMediaUrl() {
-        return 'https://media.izi.travel/' 
-            + this.selectedPart.content_provider.uuid 
-            + '/' 
-            + this.selectedPart.content[0].audio[0].uuid 
-            + '.m4a';
+        return this.iziTravelApiService.getMediaUrl(
+            this.selectedPart.content_provider.uuid, 
+            this.selectedPart.content[0].audio[0].uuid
+        );
     }
 }
